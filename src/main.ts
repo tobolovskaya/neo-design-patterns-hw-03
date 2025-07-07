@@ -30,7 +30,7 @@ switch (provider) {
 
 // Створюємо контекст та обробляємо платіж
 const context = new PaymentContext(factory);
-context.processPayment(100);
+context.processPayment(100, 'tx-001');
 
 // Приклад параметрів: сума та ідентифікатор транзакції
 const amount = parseFloat(process.argv[3] || '100');
