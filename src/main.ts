@@ -25,7 +25,6 @@ switch (provider) {
   default:
     console.error(`Unknown provider: ${provider}. Using Stripe as default.`);
     process.exit(1);
-    factory = new StripeFactory();
 }
 
 // Створюємо контекст та обробляємо платіж
