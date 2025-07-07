@@ -6,11 +6,21 @@
   "scripts": {
     "start": "ts-node src/main.ts"
   },
-  "dependencies": {
-    "ts-node": "^10.9.1",
-    "typescript": "^5.0.4"
-  },
   "devDependencies": {
-    "@types/node": "^20.19.4"
-  }
+    "@types/node": "^20.19.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tobolovskaya/neo-design-patterns-hw-03.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/tobolovskaya/neo-design-patterns-hw-03/issues"
+  },
+  "homepage": "https://github.com/tobolovskaya/neo-design-patterns-hw-03#readme"
 }
