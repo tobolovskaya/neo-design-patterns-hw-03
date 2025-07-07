@@ -1,3 +1,95 @@
+# Payment System with Factory Patterns
+
+Цей проєкт демонструє реалізацію платіжної системи з динамічним вибором провайдера за допомогою патернів «Factory Method» та «Abstract Factory».
+
+## Структура проєкту
+
+```
+src/
+  core/
+    PaymentProvider.ts          # Інтерфейс провайдера платежів
+    PaymentProviderFactory.ts   # Інтерфейс фабрики провайдера
+  providers/
+    stripe/
+      StripePaymentProvider.ts  # Реалізація PaymentProvider для Stripe
+      StripeFactory.ts          # Фабрика Stripe
+    paypal/
+      PayPalPaymentProvider.ts  # Реалізація PaymentProvider для PayPal
+      PayPalFactory.ts          # Фабрика PayPal
+    apple/
+      ApplePayPaymentProvider.ts# Реалізація PaymentProvider для ApplePay
+      ApplePayFactory.ts        # Фабрика ApplePay
+  app/
+    PaymentContext.ts           # Контекст обробки платежу
+  models/
+    User.ts                     # (Опційно для інших ДЗ)
+  services/
+    ...                         # (Опційно для інших ДЗ)
+  main.ts                      # Точка входу: вибір провайдера та обробка
+
+.gitignore                      # Ігнорує node_modules та інші артефакти
+package.json, tsconfig.json     # Налаштування TypeScript та npm
+```
+
+## Використані патерни
+
+- **Factory Method** — визначення інтерфейсу для створення об’єкта, делегування створення підкласам.
+- **Abstract Factory** — групування фабрик (через PaymentContext) для отримання сімейства об’єктів.
+
+## Запуск проєкту
+
+### Встановлення залежностей та ініціалізація
+
+```bash
+npm install
+npm install --save-dev typescript ts-node @types/node
+npx tsc --init
+``` 
+
+### Динамічний вибір провайдера
+
+#### Stripe
+```bash
+npx ts-node src/main.ts stripe
+```
+Виведення:
+```
+[Stripe] Authorizing $100
+[Stripe] Capturing transaction tx-001
+[Stripe] Refunding transaction tx-001
+```
+
+#### PayPal
+```bash
+npx ts-node src/main.ts paypal
+```
+Виведення:
+```
+[PayPal] Authorizing $100
+[PayPal] Capturing transaction tx-001
+[PayPal] Refunding transaction tx-001
+```
+
+#### ApplePay
+```bash
+npx ts-node src/main.ts applepay
+```
+Виведення:
+```
+[ApplePay] Authorizing $100
+[ApplePay] Capturing transaction tx-001
+[ApplePay] Refunding transaction tx-001
+```
+
+*За замовчуванням: `amount = 100`, `transactionId = tx-001`.*
+
+---
+
+© 2025 Payment System with Factory Patterns
+
+
+
+
 # Домашнє завдання до Теми Породжувальні патерни: Фабрика й Абстрактна фабрика
 
 У реальних застосунках робота з платіжними системами — це завжди про змінність, залежності й масштабованість. У цьому завданні ви навчитеся відділяти створення об’єктів від їх використання за допомогою **патернів Factory Method і Abstract Factory**, що дає змогу будувати гнучкі, модульні та розширювані системи. Це базовий крок до створення архітектур, які легко адаптуються під зміну бізнес-вимог і технологій.
